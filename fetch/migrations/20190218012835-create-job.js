@@ -17,7 +17,6 @@ module.exports = {
         type: Sequelize.TEXT
       },
       locationId: {
-        allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: 'Locations',
@@ -29,19 +28,16 @@ module.exports = {
       enable: {
         type: Sequelize.BOOLEAN
       },
-      startAt: {
-        allowNull: false,
+      startDate: {
         type: Sequelize.DATE
       },
-      endAt: {
-        allowNull: false,
+      endDate: {
         type: Sequelize.DATE
       },
       type: {
         type: Sequelize.STRING
       },
       categoryId: {
-        allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: 'Categories',
@@ -56,12 +52,19 @@ module.exports = {
       picture: {
         type: Sequelize.STRING
       },
-      createAt: {
-        type: Sequelize.DATE
-      },
       order: {
         type: Sequelize.INTEGER
       },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('NOW()'),
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('NOW()'),
+      }
     });
   },
   down: (queryInterface, Sequelize) => {
